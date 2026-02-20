@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Crust | Artisanal Bakery</title>
+    
+    <!-- Preconnect for Lightning Fast Video Loading -->
+    <link rel="preconnect" href="https://player.vimeo.com">
+    <link rel="preconnect" href="https://i.vimeocdn.com">
+    <link rel="preconnect" href="https://f.vimeocdn.com">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .hero-video {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* --- NEW ANIMATION CLASSES --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); filter: blur(8px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#FAF7F2] text-[#4A3728]">
+
+    <!-- Responsive Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#EADDCD] px-4 md:px-6 py-3 md:py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            
+            <!-- Brand Logo -->
+            <a href="#" class="shrink-0 flex items-center gap-3 md:gap-4">
+                <img src="https://img.sanishtech.com/u/e751ea92031dbb8170cb9298e2bc32cf.png" alt="The Golden Crust Logo" class="h-12 md:h-16 w-auto object-contain">
+                <span class="text-[#8B4513] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-sm sm:text-base md:text-xl mt-1">The Golden Crust</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex space-x-8 lg:space-x-12 font-medium items-center">
+                <a href="#about" class="hover:text-[#D97706] transition">Our Story</a>
+                <a href="#menu" class="hover:text-[#D97706] transition">Menu</a>
+                <a href="#location" class="hover:text-[#D97706] transition">Visit Us</a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-[#8B4513] focus:outline-none p-1">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white border-b border-[#EADDCD] shadow-lg flex flex-col items-center py-6 space-y-6 font-medium z-40">
+            <a href="#about" class="mobile-link text-lg text-[#4A3728] hover:text-[#D97706]">Our Story</a>
+            <a href="#menu" class="mobile-link text-lg text-[#4A3728] hover:text-[#D97706]">Menu</a>
+            <a href="#location" class="mobile-link text-lg text-[#4A3728] hover:text-[#D97706]">Visit Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[85vh] md:h-[90vh] overflow-hidden text-white bg-[#1a120b]">
+
+        <!-- Vimeo Background -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <iframe 
+                src="https://player.vimeo.com/video/1166583045?background=1&autoplay=1&loop=1&muted=1&playsinline=1&title=0&byline=0&portrait=0&autopause=0"
+                class="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.05]"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 h-full flex items-center justify-center text-center px-4 md:px-6">
+            <div class="max-w-4xl w-full">
+                <!-- Responsive Typography -->
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 md:mb-6 leading-tight opacity-0 animate-fade-in-up">
+                    Baked Fresh Every Morning
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl mb-8 md:mb-10 opacity-0 font-light italic max-w-2xl mx-auto px-2 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    Handcrafted pastries, sourdough, and cinnamon rolls made with love.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <a href="tel:5550123456" 
+                        class="w-full sm:w-auto bg-white text-[#4A3728] px-8 py-3.5 md:py-3 rounded-md font-semibold hover:bg-[#F3E5D8] transition-all inline-flex items-center justify-center shadow-lg hover:-translate-y-1 hover:shadow-xl duration-300">
+                        Call Now
+                    </a>
+
+                    <button onclick="scrollToSection('location')" 
+                        class="w-full sm:w-auto border-2 border-white bg-black/20 backdrop-blur-sm px-8 py-3.5 md:py-3 rounded-md font-semibold hover:bg-white hover:text-black transition-all shadow-lg hover:-translate-y-1 hover:shadow-xl duration-300">
+                        Visit Us
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="reveal rounded-2xl overflow-hidden shadow-xl order-2 md:order-1 h-64 sm:h-80 md:h-full">
+                <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Baker at work" class="w-full h-full object-cover">
+            </div>
+            <div class="reveal delay-200 order-1 md:order-2">
+                <span class="text-[#D97706] font-semibold uppercase tracking-widest text-xs sm:text-sm">Since 1994</span>
+                <h2 class="text-3xl sm:text-4xl mt-2 mb-4 md:mb-6">Tradition You Can Taste</h2>
+                <p class="text-gray-600 leading-relaxed mb-6 text-sm sm:text-base">
+                    Our journey started in a small home kitchen with a single sourdough starter. Today, we bring that same passion to every loaf and pastry we bake. We use organic, stone-ground flour and follow slow-fermentation processes to ensure every bite is perfect.
+                </p>
+                <div class="flex items-center space-x-4 bg-white p-4 rounded-xl shadow-sm border border-[#EADDCD] w-fit">
+                    <div class="bg-[#F3E5D8] p-2 md:p-3 rounded-full text-lg md:text-xl">🥐</div>
+                    <p class="font-medium text-[#8B4513] text-sm md:text-base">Authentic French recipes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu / Signature Treats -->
+    <section id="menu" class="bg-[#F3E5D8]/30 py-16 md:py-24 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="reveal text-3xl sm:text-4xl mb-10 md:mb-14">Signature Treats</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Item 1 -->
+                <div class="reveal delay-100 bg-white p-5 md:p-6 rounded-xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group text-left">
+                    <div class="h-40 md:h-48 mb-4 overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Croissant" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg md:text-xl mb-2">Classic Butter Croissant</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-2">Flaky, golden layers made with 100% grass-fed French butter.</p>
+                    <span class="font-bold text-[#D97706] block">$4.50</span>
+                </div>
+                <!-- Item 2 -->
+                <div class="reveal delay-200 bg-white p-5 md:p-6 rounded-xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group text-left">
+                    <div class="h-40 md:h-48 mb-4 overflow-hidden rounded-lg">
+                        <img src="https://img.sanishtech.com/u/ac4f4d0ff3f14e0ec8ab259f22ce6373.webp" alt="Rustic Sourdough" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg md:text-xl mb-2">Rustic Sourdough</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-2">Our 48-hour fermented signature loaf with a thick, crunchy crust.</p>
+                    <span class="font-bold text-[#D97706] block">$8.00</span>
+                </div>
+                <!-- Item 3 -->
+                <div class="reveal delay-300 bg-white p-5 md:p-6 rounded-xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group text-left">
+                    <div class="h-40 md:h-48 mb-4 overflow-hidden rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chocolate Cake" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    </div>
+                    <h3 class="text-lg md:text-xl mb-2">Velvet Ganache Cake</h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-2">Rich dark chocolate sponge layered with silky smooth ganache.</p>
+                    <span class="font-bold text-[#D97706] block">$35.00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / Hours Section -->
+    <section id="location" class="py-16 md:py-24 px-4 sm:px-6 max-w-7xl mx-auto">
+        <div class="bg-[#4A3728] text-white rounded-2xl md:rounded-3xl overflow-hidden grid md:grid-cols-2 shadow-2xl">
+            <div class="reveal p-8 md:p-12 lg:p-16">
+                <h2 class="text-2xl sm:text-3xl mb-6 md:mb-8 text-[#D97706]">Visit the Warmth</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold mb-1 uppercase text-xs tracking-widest opacity-60">Address</h4>
+                        <p class="text-base md:text-lg">123 Baker’s Lane, Flour District<br>Sweet City, SC 54321</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-bold mb-1 uppercase text-xs tracking-widest opacity-60">Mon - Fri</h4>
+                            <p class="text-sm md:text-base">6:00 AM - 6:00 PM</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1 uppercase text-xs tracking-widest opacity-60">Sat - Sun</h4>
+                            <p class="text-sm md:text-base">7:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-1 uppercase text-xs tracking-widest opacity-60">Call Us</h4>
+                        <p class="text-base md:text-lg">(555) 012-3456</p>
+                    </div>
+                </div>
+                <div class="mt-8 md:mt-10">
+                    <a href="tel:5550123456" class="border-2 border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-white w-full py-3.5 md:py-4 rounded-xl transition-all font-bold uppercase tracking-widest text-sm md:text-base flex items-center justify-center bg-transparent hover:scale-[1.02] active:scale-[0.98] duration-300">
+                        Call Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Map Container - Responsive Height -->
+            <div class="reveal delay-200 min-h-[300px] h-64 sm:h-80 md:h-auto bg-[#33251a] relative overflow-hidden">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147703055!2d-74.1197631!3d40.6974034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1683057390915!5m2!1sen!2sus" 
+                    class="absolute inset-0 w-full h-full border-0" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 md:py-12 border-t border-[#EADDCD] text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-lg md:text-xl font-bold text-[#8B4513] mb-4 uppercase tracking-widest">The Golden Crust</div>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-8 text-xs md:text-sm opacity-60">
+                <a href="#" class="hover:text-[#D97706]">Instagram</a>
+                <a href="#" class="hover:text-[#D97706]">Facebook</a>
+                <a href="#" class="hover:text-[#D97706]">Twitter</a>
+            </div>
+            <p class="text-[10px] md:text-xs text-gray-400">&copy; 2024 The Golden Crust Bakery. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Smooth scrolling for page links
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Mobile Menu Toggle Logic
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Intersection Observer for Scroll Reveal Animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15, // Triggers when 15% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before the element fully crosses the bottom edge
+            };
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Stop observing once revealed
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
